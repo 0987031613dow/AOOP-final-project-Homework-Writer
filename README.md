@@ -18,7 +18,7 @@ Suika Game is a 2D game developed using the Unity engine. The goal is to create 
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/suika-game.git
+git clone https://github.com/0987031613dow/final_project_suika_game
 
 # Open the project with Unity
 # Navigate to the cloned repository folder and open the project using the Unity Engine.
