@@ -24,6 +24,7 @@ git clone https://github.com/0987031613dow/final_project_suika_game
 # Navigate to the cloned repository folder and open the project using the Unity Engine.
 
 # If there are any additional dependencies or setup steps, include them here.
+bash
 
 ### Game Play
 
