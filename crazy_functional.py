@@ -36,9 +36,15 @@ def get_crazy_functions():
     from crazy_functions.Latex全文翻译 import Latex英译中
     from crazy_functions.批量Markdown翻译 import Markdown中译英
     from crazy_functions.虚空终端 import 虚空终端
-
+    from crazy_functions.cv2gcode_test import test_robot_serial
 
     function_plugins = {
+        "test serial": {
+            "Group": "对话|编程|学术|智能体",
+            "Color": "stop",
+            "AsButton": True,
+            "Function": HotReload(test_robot_serial)
+        },
         "虚空终端": {
             "Group": "对话|编程|学术|智能体",
             "Color": "stop",
