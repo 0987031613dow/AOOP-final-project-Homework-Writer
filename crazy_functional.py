@@ -37,6 +37,7 @@ def get_crazy_functions():
     from crazy_functions.批量Markdown翻译 import Markdown中译英
     from crazy_functions.虚空终端 import 虚空终端
     from crazy_functions.cv2gcode_test import test_robot_serial
+    # from crazy_functions.serial_test import test_robot_serial
 
     function_plugins = {
         "test serial": {
