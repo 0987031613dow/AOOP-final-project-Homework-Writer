@@ -9,7 +9,7 @@
 本專案深受 [binary-husky](https://github.com/binary-husky) 的 [gpt_academic](https://github.com/binary-husky/gpt_academic) 專案啟發，我們在這一堅實的基礎上進行創新和發展。感謝 gpt_academic 團隊的貢獻和開放源代碼精神，為我們提供了實現更大夢想的可能。
 
 ## TODOs
-- [ ] 加入GPT-4V型並尋找適合的prompt
+- [ ] 調用GPT-4V模型並尋找適合的prompt
 - [ ] 加入連接webcam功能
 - [ ] 加入langchain功能完善agent調用
 - [ ] 結合tex仿手寫渲染功能
