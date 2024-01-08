@@ -36,6 +36,7 @@ def get_crazy_functions():
     from crazy_functions.Latex全文翻译 import Latex英译中
     from crazy_functions.批量Markdown翻译 import Markdown中译英
     from crazy_functions.虚空终端 import 虚空终端
+    from crazy_functions.svg_to_gcode_copy import svg_to_gcode
 
 
     function_plugins = {
@@ -277,6 +278,11 @@ def get_crazy_functions():
             "AsButton": False,  # 加入下拉菜单中
             "Info": "批量将Markdown文件中文翻译为英文 | 输入参数为路径或上传压缩包",
             "Function": HotReload(Markdown中译英)
+        },
+        "svg_to_gcode": {
+            "Color": "stop",
+            "AsButton": False,
+            "Function": HotReload(svg_to_gcode)
         },
     }
 
