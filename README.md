@@ -10,9 +10,6 @@
 
 ## TODOs
 - [ ] 調用GPT-4V模型並尋找適合的prompt
-- [ ] 加入連接webcam功能
-- [ ] 加入langchain功能完善agent調用
-- [ ] 結合tex仿手寫渲染功能
 - [x] 測試serial port連接功能
 - [x] 完善gcode輸出格式
 - [x] 校正手寫機器人書寫路徑規劃
