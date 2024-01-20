@@ -610,6 +610,19 @@ def get_crazy_functions():
         print(trimmed_format_exc())
         print('Load function plugin failed')
 
+    try:
+        from crazy_functions.cv2gcode_test import answer_to_gcode
+        function_plugins.update({
+            "Answer to Gcode": {
+                "Color": "stop",
+                "AsButton": False,
+                "Function": HotReload(answer_to_gcode)
+            }
+        })
+    except:
+        print(trimmed_format_exc())
+        print('Load function plugin failed')
+
     # try:
     #     from crazy_functions.chatglm微调工具 import 微调数据集生成
     #     function_plugins.update({
