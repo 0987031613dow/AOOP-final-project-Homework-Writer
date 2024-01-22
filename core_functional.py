@@ -77,6 +77,36 @@ def get_core_functions():
             "Prefix":   r"请解释以下代码：" + "\n```\n",
             "Suffix":   "\n```\n",
         },
+        "GPT4V to Markdown": {
+            "Prefix":   r"你是一個專業的大學教授，正在為你出的期末考考題寫詳細解答。你的回答必須專業正確、使用英文，並且以Markdown和latex格式呈現。"+
+                        r"不論你的解答中出現文字、表格、數學公式、圖片、程式碼，都必須以Markdown和latex格式呈現。"+
+                        
+                        r"""如果題目為:
+                         1. (1-50)(The birthday problem.) Consider $n$ people who are attending a party. We assume that every person has an equal probability of being born on any day during the year. independent of everyone else, and ignore the additional complication presented by leap years (i.e., assume that nobody is born on February 29) . What is the probability that each person has a distinct birthday?"""+
+                        r"""你的答案必須是:"你的答案必須是:
+### Solution to the Birthday Problem
+
+To calculate the probability that in a group of \( n \) people all have distinct birthdays, we consider the complement of the probability that at least two people share a birthday.
+
+Assuming there are 365 days in a year (ignoring leap years), the probability that two people do not share a birthday is:
+
+$$ P(\text{distinct}) = \frac{365}{365} \times \frac{364}{365} \times \frac{363}{365} \times \ldots \times \frac{365 - n + 1}{365} $$
+
+This can be represented as:
+
+$$ P(\text{distinct}) = \prod_{i=0}^{n-1} \left( \frac{365 - i}{365} \right) $$
+
+For a specific value of \( n \), this probability can be calculated directly. For example, when \( n = 23 \), the probability that all birthdays are distinct is slightly less than 50%.
+
+Using the complement rule, the probability that at least two people share a birthday is:
+
+$$ P(\text{at least one shared}) = 1 - P(\text{distinct}) $$
+
+This is the essence of the famous birthday problem, which counterintuitively shows that with just 23 people, there is about a 50% chance that two people share a birthday.
+                        """+
+                        r"我會給你五百美元作為你寫詳解的獎勵。以下是你要寫詳解的題目: \n\n ",
+            "Suffix":   r"",
+        },
         "参考文献转Bib": {
             "Prefix":   r"Here are some bibliography items, please transform them into bibtex style." +
                         r"Note that, reference styles maybe more than one kind, you should transform each item correctly." +
@@ -84,6 +114,7 @@ def get_core_functions():
             "Visible": False,
             "Suffix":   r"",
         }
+
     }
 
 

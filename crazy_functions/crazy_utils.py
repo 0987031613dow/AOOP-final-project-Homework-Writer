@@ -63,7 +63,7 @@ def request_gpt_model_in_new_thread_with_ui_alive(
     """
     import time
     from concurrent.futures import ThreadPoolExecutor
-    from request_llms.bridge_all import predict_no_ui_long_connection
+    from request_llms.bridge_all import predict_no_ui_long_connection, predict
     # 用户反馈
     chatbot.append([inputs_show_user, ""])
     yield from update_ui(chatbot=chatbot, history=[]) # 刷新界面
@@ -81,9 +81,10 @@ def request_gpt_model_in_new_thread_with_ui_alive(
                 raise RuntimeError("检测到程序终止。")
             try:
                 # 【第一种情况】：顺利完成
-                result = predict_no_ui_long_connection(
-                    inputs=inputs, llm_kwargs=llm_kwargs,
-                    history=history, sys_prompt=sys_prompt, observe_window=mutable)
+                # result = predict_no_ui_long_connection(
+                #     inputs=inputs, llm_kwargs=llm_kwargs,
+                #     history=history, sys_prompt=sys_prompt, observe_window=mutable)
+                result = predict(inputs, llm_kwargs=llm_kwargs, history=history, chatbot=chatbot, plugin_kwargs={})
                 return result
             except ConnectionAbortedError as token_exceeded_error:
                 # 【第二种情况】：Token溢出

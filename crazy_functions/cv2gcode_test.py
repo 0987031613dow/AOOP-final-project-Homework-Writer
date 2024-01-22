@@ -10,11 +10,33 @@ from toolbox import update_ui
 from toolbox import CatchException, report_exception
 from toolbox import write_history_to_file, promote_file_to_downloadzone
 from .crazy_utils import request_gpt_model_in_new_thread_with_ui_alive
+import pypandoc
 fast_debug = False
 
 # Adjustable font and size
 font_name = "Helvetica"
 font_size = 30
+import pdfkit
+import tempfile
+import shutil
+import os
+
+
+
+def create_pdf_with_markdown(markdown_text):
+    # 指定wkhtmltopdf的路徑
+    path_wkhtmltopdf = "C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe"
+    config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
+    
+    # 創建一個暫存檔案
+    # temp_pdf = tempfile.NamedTemporaryFile(suffix=".pdf", delete=False)  # delete=False 是必須的，這樣檔案不會在關閉時被刪除
+    pdf_path = "output.pdf"
+    # Convert the Markdown text to PDF using pypandoc
+    pypandoc.convert_text(markdown_text, 'pdf', format='md', outputfile=pdf_path, extra_args=['--pdf-engine=xelatex'])
+
+
+    return pdf_path
+
 
 
 def create_pdf_with_text(text, pdf_filename='output'):
@@ -120,7 +142,7 @@ def contour2Gcode(contours):
     print("G-code generation complete.")
 
 @CatchException
-def answer_to_gcode(txt, llm_kwargs, plugin_kwargs, chatbot, history, system_prompt, web_port):
+def answer_to_gcode(txt, llm_kwargs, plugin_kwargs, chatbot, history, system_prompt, web_port, model="gpt-4-vision-preview"):
     chatbot.append(
         ["Function plugin?", "Making chatbot answers to gcode. Contributors: Brian, Dow"])
     yield from update_ui(chatbot=chatbot, history=history)  # 刷新介面
@@ -140,22 +162,7 @@ def answer_to_gcode(txt, llm_kwargs, plugin_kwargs, chatbot, history, system_pro
 
     yield from update_ui(chatbot=chatbot, history=history)
     
-    i_say = txt
-    i_say_show_user = txt
-
-    gpt_say = yield from request_gpt_model_in_new_thread_with_ui_alive(
-        inputs=i_say,
-        inputs_show_user=i_say_show_user,
-        llm_kwargs=llm_kwargs,
-        chatbot=chatbot,
-        history=history,
-        sys_prompt=system_prompt
-    )
-
-    chatbot[-1] = (i_say_show_user, gpt_say)
-    history.extend([i_say_show_user, gpt_say])
-
-    pdf_path = create_pdf_with_text(gpt_say)
+    pdf_path = create_pdf_with_markdown(txt)
 
     image_path = convert_pdf_to_image(pdf_path, 'output_image')
 
