@@ -36,7 +36,7 @@ def get_crazy_functions():
     from crazy_functions.Latex全文翻译 import Latex英译中
     from crazy_functions.批量Markdown翻译 import Markdown中译英
     from crazy_functions.虚空终端 import 虚空终端
-    from crazy_functions.cv2gcode_test import answer_to_gcode
+    from crazy_functions.answer2gcode_test import answer_to_gcode
 
 
     function_plugins = {
@@ -281,7 +281,7 @@ def get_crazy_functions():
         },
         "Answer to gcode": {
             "Color": "stop",
-            "AsButton": False,
+            "AsButton": True,
             "Function": HotReload(answer_to_gcode)
         },
     }
@@ -611,7 +611,7 @@ def get_crazy_functions():
         print('Load function plugin failed')
 
     try:
-        from crazy_functions.cv2gcode_test import answer_to_gcode
+        from crazy_functions.answer2gcode_test import answer_to_gcode
         function_plugins.update({
             "Answer to Gcode": {
                 "Color": "stop",
